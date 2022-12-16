@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: odoo-db
+  namespace: odoo
+  labels:
+    app: odoo-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: odoo-shop
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: odoo-shop
+        tier: backend
+    spec:
+      containers:
+      - image: postgres:13
+        name: odoo-db
+        env:
+        - name: POSTGRES_USER
+          value: odoo
+        - name: POSTGRES_PASSWORD
+          value: password
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
+        ports:
+        - containerPort: 5432
+          name: odoo-db
+        volumeMounts:
+        - name: odoo-db-pvc
+          mountPath: /var/lib/postgresql/data
+      volumes:
+      - name: odoo-db-pvc
+        persistentVolumeClaim:
+          claimName: odoo-db-pvc
