@@ -16,3 +16,7 @@ $ kubectl apply -f 6.yaml
 kubectl config set-context --current --namespace=default
 kubectl config set-context --current --namespace=odoo
 ````
+
+````
+kubectl delete namespace odoo 
+````
