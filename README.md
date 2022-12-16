@@ -2,7 +2,7 @@
 
 ````
 git clone https://github.com/falconsoft3d/odoo-k8s.git
-cd minikube
+cd odoo-k8s/minikube
 ````
 
 # minikube
