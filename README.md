@@ -1,7 +1,7 @@
 # odoo-k8s
 
 ````
-git clone git@github.com:falconsoft3d/odoo-k8s.git
+git clone https://github.com/falconsoft3d/odoo-k8s.git
 cd minikube
 ````
 
